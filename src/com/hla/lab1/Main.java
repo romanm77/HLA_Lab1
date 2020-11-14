@@ -22,7 +22,7 @@ public class Main {
         System.arraycopy(array, 0, a1, 0, middle);
         System.arraycopy(array, middle, a2, 0, d);
 
-        Future <?> f1 = pool.submit(() -> {
+        Future<?> f1 = pool.submit(() -> {
             sort(a1);
         });
 
@@ -33,6 +33,7 @@ public class Main {
         f1.get();
         f2.get();
         print(merge(a1, a2));
+        pool.shutdown();
     }
 
     static void sort(int[] array) {
